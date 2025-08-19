@@ -72,7 +72,7 @@ Before initializing VulnBot, you need to configure system settings. Refer to the
 - **LLM settings** (base_url, llm_model_name, api_key)
 - **Enabling RAG** (set `enable_rag` to `true` and configure `milvus` and `kb_name`)
 
-- **Config database in config/config.py** 
+- **Config database in config/config.py (should do first for cli.py init)** 
 ```
 class DBConfig(BaseFileSettings):
     model_config = SettingsConfigDict(yaml_file=PENTEST_ROOT / "db_config.yaml")
@@ -109,7 +109,7 @@ Before using VulnBot, initialize the project:
 ```sh
 python cli.py init
 ```
-
+- It will create **config yaml files** in main folder, then you can edit in these follow up by [Configuration Guide](Configuration%20Guide.md).
 ### Start the RAG Module
 
 ```sh
