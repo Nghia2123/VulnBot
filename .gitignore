@@ -11,6 +11,7 @@ __pycache__/
 .idea/
 .pytest_cache
 .DS_Store
+mysql_data/
 
 
 data/
