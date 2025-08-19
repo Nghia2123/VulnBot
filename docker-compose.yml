@@ -4,11 +4,11 @@ services:
     container_name: mysql_vulnbot
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: "123"    # mật khẩu root
-      MYSQL_DATABASE: vulnbot_db      # database mặc định
-      MYSQL_USER: vulnbot_user        # user mới
-      MYSQL_PASSWORD: "123"    # mật khẩu user mới
+      MYSQL_ROOT_PASSWORD: "123"    
+      MYSQL_DATABASE: vulnbot_db      
+      MYSQL_USER: vulnbot        
+      MYSQL_PASSWORD: "123"    
     ports:
-      - "3306:3306"  # map cổng ngoài vào container
+      - "3306:3306"  
     volumes:
-      - ./mysql_data:/var/lib/mysql   # lưu trữ dữ liệu ngoài
+      - ./mysql_data:/var/lib/mysql   # save db outside
