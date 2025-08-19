@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_vulnbot
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "123"    # mật khẩu root
+      MYSQL_DATABASE: vulnbot_db      # database mặc định
+      MYSQL_USER: vulnbot_user        # user mới
+      MYSQL_PASSWORD: "123"    # mật khẩu user mới
+    ports:
+      - "3306:3306"  # map cổng ngoài vào container
+    volumes:
+      - ./mysql_data:/var/lib/mysql   # lưu trữ dữ liệu ngoài

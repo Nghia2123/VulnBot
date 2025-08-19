@@ -67,7 +67,7 @@ uv venv --python 3.11.11 && uv pip install -r requirements.txt && source .venv/b
 
 Before initializing VulnBot, you need to configure system settings. Refer to the [Configuration Guide](Configuration%20Guide.md) for detailed instructions on modifying:
 
-- **Kali Linux configuration** (hostname, port, username, password)
+- **Kali Linux configuration** (hostname, port, username, password) (require install ssh service)
 - **MySQL database settings** (host, port, user, password, database)
 - **LLM settings** (base_url, llm_model_name, api_key)
 - **Enabling RAG** (set `enable_rag` to `true` and configure `milvus` and `kb_name`)
