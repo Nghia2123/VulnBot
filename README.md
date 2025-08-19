@@ -55,11 +55,13 @@ Install VulnBot using one of the following methods:
    cd VulnBot
    ```
 
-3. Install the dependencies:
-
-   ```sh
-   pip install -r requirements.txt
-   ```
+3. Install the dependencies by uv:
+- **Install uv**: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+- **Install dependencies**: 
+```sh
+uv venv --python 3.11.11 && uv pip install -r requirements.txt && source .venv/bin/activate
+```
+- **Note**: If need install something `uv pip install {package}`
 
 ### Configuration Guide
 
@@ -69,6 +71,36 @@ Before initializing VulnBot, you need to configure system settings. Refer to the
 - **MySQL database settings** (host, port, user, password, database)
 - **LLM settings** (base_url, llm_model_name, api_key)
 - **Enabling RAG** (set `enable_rag` to `true` and configure `milvus` and `kb_name`)
+
+- **Config database in config/config.py** 
+```
+class DBConfig(BaseFileSettings):
+    model_config = SettingsConfigDict(yaml_file=PENTEST_ROOT / "db_config.yaml")
+    mysql: dict = {
+        "host": "localhost",
+        "port": 3306,
+        "user": "vulnbot",
+        "password": "123",
+        "database": "vulnbot_db"
+    }
+```
+- **docker-compose.yml for db**
+```
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_vulnbot
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "123"    
+      MYSQL_DATABASE: vulnbot_db     
+      MYSQL_USER: vulnbot        
+      MYSQL_PASSWORD: "123"    
+    ports:
+      - "3306:3306"  
+    volumes:
+      - ./mysql_data:/var/lib/mysql   # save database outside
+```
 
 ### Initialize the Project
 

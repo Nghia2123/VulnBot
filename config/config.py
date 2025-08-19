@@ -64,11 +64,11 @@ class BasicConfig(BaseFileSettings):
 class DBConfig(BaseFileSettings):
     model_config = SettingsConfigDict(yaml_file=PENTEST_ROOT / "db_config.yaml")
     mysql: dict = {
-        "host": "",
+        "host": "localhost",
         "port": 3306,
-        "user": "",
-        "password": "",
-        "database": ""
+        "user": "vulnbot",
+        "password": "123",
+        "database": "vulnbot_db"
     }
 
 
